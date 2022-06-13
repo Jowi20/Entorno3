@@ -24,4 +24,4 @@ deploy:
   api_key: 
   app: myapp
   on:
-    repo: jowi20/entorno3
+    repo: Jowi20/Entorno3
