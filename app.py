@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-rom sys import argv
+from sys import argv
 import bottle
 from bottle import route,run
 
@@ -20,7 +20,7 @@ bottle.debug(True)
 
 @route('/')
 def index():
-	return "<h1>Hola Mundo, esto sera una calculadora web, probablemente!!!</h1>"
+	return "<h1>¿Qué onda? La calculadora está en desarrollo, probablemente!!!</h1>"
 
 
 #if __name__ == '__main__':
