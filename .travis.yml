@@ -11,8 +11,6 @@ script:
 - pytest
 notifications:
   slack: entornodeinte-7kl4185:GsBAv7KUh6sobdyEqsTKU6Xq
-before_deploy:
-- rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
 deploy:
   provider: heroku
   skip_cleanup: true
