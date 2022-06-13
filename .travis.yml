@@ -1,27 +1,24 @@
 language: python
 python:
-  - "3.9"
+- '3.9'
 install:
-  - pip install -r requirements.txt
+- pip install -r requirements.txt
 addons:
   sonarcloud: true
-
 script:
-  - sonar-scanner -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=jowi20 -Dsonar.login=$SONAR_TOKEN -X
-  - pytest
-
+- sonar-scanner -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=jowi20
+  -Dsonar.login=$SONAR_TOKEN -X
+- pytest
 notifications:
   slack: entornodeinte-7kl4185:GsBAv7KUh6sobdyEqsTKU6Xq
-
 before_deploy:
-  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
-
+- rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
 deploy:
   provider: heroku
   skip_cleanup: true
   keep-history: true
-  api_key: 
-    secure: 70edfdcd-1f0e-4760-ae10-cbd99c3b7a85
+  api_key:
+    secure: f+PqQcZknU8jAdFe1D4sV800ld40q50a1hZpCSBsfCJxApJGdtFMwOnRJAjP+oZc/HbOPOHIzt7Jrwl8GLjbrOKG7OtdbYnkvNUKK7G6fJxQYgFNAnCfSnuSL1U+p3/eF2x41C/JCTeHT/9k4Kb1Cu6sSI7tmrNB9Q+LXD/8nbthFZHo3hVilujqAwvic3hgNgzS/EVLYaz8mzjgP/6qPbtgC4H1kIRsglpnAs0mVErEXKVF2Vc0hWxXGy0vW7Wx/KQO+k3I1lfw+IQbXx6gyMFB1mooHhWx7oiL7G89sfq8xsiZuh2rizMQA0U8FWlc9lZfluwVnyJZrGiW333k+2Lt0zX1dZrEfC2U7OEBZAa8G2KAUdSl4iLAd665iq4FyQ5/MnL8zItkkolIH7Jyn8O40sX+GaSGMA/S92DvcOILYTwpTp3dRrTRFli/3Gx4KZDB1i4BLuaK6f4JcX7FQfNwJWeSMltgfp7j0joUrUTjmTPFjE9dHHtcnlXaF7I9RmElw9eUBdPCj5zFDOvaTre5DWv8oK5g28DN4lGikoMd3DcU1AYMe0WRfIeTUGmS6himB2UNDZFOOJJE3+Et2dVvvo+0wUNISrU7xtrbr54pWxOFM5pVnlxxNlfNBFOM4VcF6KRXU/LcuEqBTN7CTqpyTPU5VP7by3//+uSOdnE=
   app: myapp
   on:
     repo: Jowi20/Entorno3
