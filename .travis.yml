@@ -22,3 +22,4 @@ deploy:
   app: myapp
   on:
     repo: Jowi20/Entorno3
+    branch: main
