@@ -1,16 +1,25 @@
 language: python
+
 python:
 - '3.9'
+
 install:
 - pip install -r requirements.txt
+
 addons:
   sonarcloud: true
+
 script:
 - sonar-scanner -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=jowi20
   -Dsonar.login=$SONAR_TOKEN -X
 - pytest
+
 notifications:
   slack: entornodeinte-7kl4185:GsBAv7KUh6sobdyEqsTKU6Xq
+
+before_deploy:
+  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
+
 deploy:
   provider: heroku
   skip_cleanup: true
